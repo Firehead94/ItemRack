@@ -954,7 +954,7 @@
 					</Anchor>
 				</Anchors>
 			</CheckButton>
-			<CheckButton name="ItemRackOptInv19" inherits="ItemRackOptInvTemplate" id="19">
+			<CheckButton name="ItemRackOptInv18" inherits="ItemRackOptInvTemplate" id="18">
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="ItemRackOptInv4" relativePoint="BOTTOMLEFT">
 						<Offset>
@@ -965,7 +965,7 @@
 			</CheckButton>
 			<CheckButton name="ItemRackOptInv9" inherits="ItemRackOptInvTemplate" id="9">
 				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="ItemRackOptInv19" relativePoint="BOTTOMLEFT">
+					<Anchor point="TOPLEFT" relativeTo="ItemRackOptInv18" relativePoint="BOTTOMLEFT">
 						<Offset>
 							<AbsDimension x="0" y="-4"/>
 						</Offset>
@@ -991,6 +991,7 @@
 					</Anchor>
 				</Anchors>
 			</CheckButton>
+			<!--
 			<CheckButton name="ItemRackOptInv18" inherits="ItemRackOptInvTemplate" id="18">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativeTo="ItemRackOptInv17" relativePoint="BOTTOMRIGHT">
@@ -1000,9 +1001,10 @@
 					</Anchor>
 				</Anchors>
 			</CheckButton>
+			-->
 			<CheckButton name="ItemRackOptInv0" inherits="ItemRackOptInvTemplate" id="0">
 				<Anchors>
-					<Anchor point="LEFT" relativeTo="ItemRackOptInv18" relativePoint="RIGHT">
+					<Anchor point="LEFT" relativeTo="ItemRackOptInv17" relativePoint="RIGHT">
 						<Offset>
 							<AbsDimension x="6" y="0"/>
 						</Offset>
