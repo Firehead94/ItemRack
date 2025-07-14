@@ -34,9 +34,9 @@ function ItemRack.InitButtons()
 
 
 	local button
-	for i=0,20 do
+	for i=0,19 do
 		button = _G["ItemRackButton"..i]
-		if i<20 then
+		if i<19 then
 			button:SetAttribute("type","item")
 			button:SetAttribute("slot",i)
 		else
@@ -81,7 +81,7 @@ end
 
 function ItemRack.UpdateDisableAltClick()
 	if not InCombatLockdown() then
-		for i=0,19 do
+		for i=0,18 do
 			_G["ItemRackButton"..i]:SetAttribute("alt-slot*",ItemRackSettings.DisableAltClick=="OFF" and ATTRIBUTE_NOOP or nil)
 		end
 	end
@@ -106,7 +106,7 @@ end
 
 function ItemRack.newCharacterModelFrame_OnMouseUp(self, button)
 	if IsAltKeyDown() then
-		ItemRack.ToggleButton(20)
+		ItemRack.ToggleButto1920)
 	end
 	ItemRack.oldCharacterModelFrame_OnMouseUp(self, button)
 end
@@ -127,7 +127,7 @@ function ItemRack.AddButton(id)
 	_G["ItemRackButton"..id.."Icon"]:SetTexture(ItemRack.GetTextureBySlot(id))
 	button:Show()
 	ItemRack.UpdateButtonCooldowns()
-	if id==20 then
+	if id==19 then
 		ItemRack.UpdateCurrentSet()
 		if ItemRack.ReflectEventsRunning then
 			ItemRack.ReflectEventsRunning()
@@ -360,7 +360,7 @@ end
 -- updates icons for equipment slots by grabbing the texture directly from the player's worn items
 function ItemRack.UpdateButtons()
 	for i in pairs(ItemRackUser.Buttons) do
-		if i<20 then
+		if i<19 then
 			_G["ItemRackButton"..i.."Icon"]:SetTexture(ItemRack.GetTextureBySlot(i))
 		end
 		--ranged ammo is now infinite, so the below ammo count updater has been commented out
@@ -502,7 +502,7 @@ function ItemRack.ButtonPostClick(self,button)
 			ItemRack.BuildMenu(id, nil, 2)
 		end
 	elseif IsShiftKeyDown() then
-		if id<20 then
+		if id<19 then
 			if ChatFrame1EditBox:IsVisible() then
 				ChatFrame1EditBox:Insert(GetInventoryItemLink("player",id))
 			end
@@ -510,7 +510,7 @@ function ItemRack.ButtonPostClick(self,button)
 			ItemRack.UnequipSet(ItemRackUser.CurrentSet)
 		end
 	elseif IsAltKeyDown() then
-		if id<20 and ItemRackSettings.DisableAltClick=="OFF" then
+		if id<19 and ItemRackSettings.DisableAltClick=="OFF" then
 			if not ItemRack.GetQueues()[id] then
 				LoadAddOn("ItemRackOptions")
 				ItemRackOptFrame:Show()
@@ -522,12 +522,12 @@ function ItemRack.ButtonPostClick(self,button)
 				ItemRackOptQueueEnable:SetChecked(ItemRack.GetQueuesEnabled()[id])
 			end
 			ItemRack.UpdateCombatQueue()
-		elseif id==20 then
+		elseif id==19 then
 			ItemRack.ToggleEvents(self)
 		end
-	elseif id<20 then
+	elseif id<19 then
 		ItemRack.ReflectItemUse(id)
-	elseif id==20 then
+	elseif id==19 then
 		if button=="LeftButton" and ItemRackUser.CurrentSet then
 			if ItemRackSettings.EquipToggle=="ON" then
 				ItemRack.ToggleSet(ItemRackUser.CurrentSet)
@@ -558,7 +558,7 @@ end
 
 function ItemRack.UpdateButtonCooldowns()
 	for i in pairs(ItemRackUser.Buttons) do
-		if i<20 then
+		if i<19 then
 			CooldownFrame_Set(_G["ItemRackButton"..i.."Cooldown"],GetInventoryItemCooldown("player",i))
 		end
 	end
@@ -576,7 +576,7 @@ end
 function ItemRack.UpdateButtonLocks()
 	local isLocked, alreadyLocked
 	for i in pairs(ItemRackUser.Buttons) do
-		if i<20 then
+		if i<19 then
 			isLocked = IsInventoryItemLocked(i)
 			alreadyLocked = ItemRack.LockedButtons[i]
 			if isLocked and not alreadyLocked then
@@ -607,7 +607,7 @@ function ItemRack.ButtonMenuOnClick(self)
 		else
 			LoadAddOn("ItemRackOptions")
 			ItemRackOptFrame:Show()
-			if ItemRack.menuOpen<20 then
+			if ItemRack.menuOpen<19 then
 				ItemRackOpt.TabOnClick(self,4)
 				ItemRackOpt.SetupQueue(ItemRack.menuOpen)
 			else
@@ -624,7 +624,7 @@ function ItemRack.ReflectMainScale(changing)
 	end
 	local scale = ItemRackUser.MainScale or 1
 	local button
-	for i=0,20 do
+	for i=0,19 do
 		button = ItemRackUser.Buttons[i]
 		if not changing or not button or not button.Left then
 			_G["ItemRackButton"..i]:SetScale(scale)
@@ -642,7 +642,7 @@ function ItemRack.ReflectMainScale(changing)
 end
 
 function ItemRack.ReflectMenuOnRight()
-	for i=0,20 do
+	for i=0,19 do
 		_G["ItemRackButton"..i]:SetAttribute("slot2",ItemRackSettings.MenuOnRight=="ON" and ATTRIBUTE_NOOP or nil)
 	end
 end
